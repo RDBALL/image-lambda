@@ -1,0 +1,8 @@
+{ The S3 bucket file images.json will contain the following format,
+  [ 
+    {
+    "fileName": "<uploaded file name>",
+    "fileSize": <file size measured in kb>
+    }
+  ]
+}
