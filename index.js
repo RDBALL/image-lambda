@@ -13,16 +13,16 @@ exports.handler = async (event) => {
     let imgMetadata = JSON.parse(imgList.Body.toString());
     imgMetadata.push({ name: fileName, size: fileSize });
     let imgMetadataBody = JSON.stringify(imgMetadata);
-    await S3.putObject({ ...bucketRecord, Body: imgMetadataBody, ContentType: "application/json" }).promise();
+    await S3.putObject({ ...bucketRecord, Body: imgMetadataBody, ContentType: 'application/json' }).promise();
     console.log('Bucket object metadata ----->:', imgMetadata);
   } catch (error) {
     console.log(error);
 
     const newObject = {
       Bucket: bucketName,
-      Key: "images.json",
+      Key: 'images.json',
       Body: JSON.stringify([{ name: fileName, size: fileSize }]),
-      ContentType: "application/json",
+      ContentType: 'application/json',
     };
     await S3.putObject(newObject).promise();
   }
